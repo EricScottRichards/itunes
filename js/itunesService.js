@@ -17,7 +17,7 @@ app.service('itunesService', function($http, $q){
   	var deferred = $q.defer()
   	$http({
   		method: 'JSONP',
-  		url: 'https://itunes.apple.com/search?term=' + artist + '&callback=JSON_CALLBACK',
+  		url: 'https://itunes.apple.com/search?term=' + artist + '&callback=JSON_CALLBACK&attribute=artistTerm&media=music&explicit=yes&limit=500',
 		}).then(function(response){
 			console.log(response)
 			deferred.resolve(response.data.results)

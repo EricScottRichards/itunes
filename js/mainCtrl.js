@@ -11,6 +11,7 @@ app.controller('mainCtrl', function($scope, itunesService){
       columnDefs: [
         {field: 'Play', displayName: 'Play', width: '40px', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a href="{{row.getProperty(col.field)}}"><img src="http://www.icty.org/x/image/Miscellaneous/play_icon30x30.png"></a></div>'},
         {field: 'Artist', displayName: 'Artist'},
+        {field: 'Song', displayName: 'Song'},
         {field: 'Collection', displayName: 'Collection'},
         {field: 'AlbumArt', displayName: 'Album Art', width: '110px', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><img src="{{row.getProperty(col.field)}}"></div>'},
         {field: 'Type', displayName: 'Type'},
@@ -34,15 +35,17 @@ app.controller('mainCtrl', function($scope, itunesService){
 
       .then(function(data){
         var finalArray = []
-        var Entry = function(Artist, Collection, AlbumArt, Type, CollectionPrice){
+        var Entry = function(Artist, Collection, AlbumArt, Type, CollectionPrice, Play, Song){
             this.Artist = Artist;
             this.Collection = Collection;
             this.AlbumArt =  AlbumArt;
             this.Type = Type;
             this.CollectionPrice = CollectionPrice;
+            this.Play = Play;
+            this.Song = Song;
           }
         for (var i = 0; i < data.length; i++) {
-          var entry = new Entry(data[i].artistName, data[i].collectionName, data[i].artworkUrl100, data[i].kind, data[i].collectionPrice)
+          var entry = new Entry(data[i].artistName, data[i].collectionName, data[i].artworkUrl100, data[i].kind, data[i].collectionPrice, data[i].previewUrl, data[i].trackName)
           finalArray.push(entry)
           entry = null
         }
