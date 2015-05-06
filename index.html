@@ -17,6 +17,13 @@
             <div class="form-group">
               <input type="text" class="form-control" ng-model="artist" placeholder="Artist Name" >
               <button class="btn btn-primary" ng-click="getSongData()"> Submit </button>
+
+              <input type="text" class="form-control" ng-show='show' placeholder='Filter...' ng-model='filterOptions.filterText'/>
+              <!-- <input type="text" class="form-control" ng-show='show' placeholder='Filter by song title'/>
+              <input type="text" class="form-control" ng-show='show' placeholder='Filter by collection' />
+              <input type="text" class="form-control" ng-show='show' placeholder='Filter by collection price' /> -->
+
+
             </div>
           </form>
         </div>
